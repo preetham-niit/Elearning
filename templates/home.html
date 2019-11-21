@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.common.dev.js"></script>
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+  
+  <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+  
+    
+
+
+
+</head>
+<body>
+        <div id='app'>
+                <div id='navbar-home'>
+                <b-navbar toggleable="lg" type="dark" variant="dark">
+                  <b-navbar-brand href="#">CloudPass</b-navbar-brand>
+                  <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>  
+                  <b-collapse id="nav-collapse" is-nav>
+                    <b-navbar-nav>
+                      <b-nav-item href="home">Home</b-nav-item>
+					   {% if user.is_authenticated %}
+					   
+                      <b-nav-item href="recap">Recap Lessons</b-nav-item>
+					  {%else%}
+					  <b-nav-item href="login">Recap Lessons</b-nav-item>
+					  {% endif %}
+                      <b-nav-item href="#">Practice Questions</b-nav-item>
+                      <b-nav-item href="#">Mock Tests</b-nav-item>
+                    </b-navbar-nav>
+                    <b-navbar-nav class="ml-auto">
+                      <b-nav-item-dropdown text="User" right>
+                        <b-dropdown-item href="#">Account</b-dropdown-item>
+                        <b-dropdown-item href="#">Edit Account</b-dropdown-item>
+                       {% if user.is_authenticated %}
+					   <b-dropdown-item>{{user.username}}</b-dropdown-item>
+
+					   <b-dropdown-item href="logout">Log Out</b-dropdown-item>
+					   {%else%}
+					   <b-dropdown-item href="login">Log In</b-dropdown-item>
+					   {% endif %}
+                      </b-nav-item-dropdown>
+                    </b-navbar-nav>
+                  </b-collapse> 
+                </b-navbar>
+                </div>
+                <div id='carousel-home'>
+                  <b-carousel
+                    id="carousel-fade"
+                    :interval="4000"
+                    style="text-shadow: 0px 0px 2px #000"
+                    fade
+                    indicators
+                    img-width="1024"
+                    img-height="400"
+                  >
+                    <b-carousel-slide img-src="https://www.amstar.in/wp-content/uploads/2019/03/cloud-cybersecurity-cyber.jpg">
+                      <h1>Welcome to CloudPass!</h1>
+                      <button> Login/Sign Up </button>
+                    </b-carousel-slide>
+                    
+                    <b-carousel-slide img-src="https://images.idgesg.net/images/article/2018/08/certification_education_knowledge_learning_a_woman_accesses_a_diploma_icon_within_a_grid_of_technology_symbols_by_svetazi_gettyimages-646945874_1200x800-100766598-large.jpg">
+                      <h2>
+                        One place destination to clear cloud certification exams!
+                      </h2>
+                    </b-carousel-slide>
+                  </b-carousel>
+                </div>
+               
+        </div>
+
+        <script > let app = new Vue({
+    el:'#app',
+    data :{
+      arr : [1,2,3]
+    }
+  })</script>
+        </body>
+        </html>              
